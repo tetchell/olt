@@ -1,0 +1,7 @@
+language: java
+os:
+- linux
+script:
+- ls -Ra
+after_success:
+    echo "after_success"
