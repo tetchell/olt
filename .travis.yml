@@ -2,6 +2,10 @@ language: java
 os:
 - linux
 
+branches:
+    only:
+        - integration
+
 # https://docs.travis-ci.com/user/deployment/bintray/
 
 script:
