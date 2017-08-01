@@ -17,6 +17,7 @@ before_deploy:
     ./before-deploy.sh
 
 deploy:
+    on: integration
     provider: bintray
     file: "bintray.json"
     user: "tetchell"

@@ -24,14 +24,14 @@ else
 fi
 
 sed -i -e "s/__vcs_tag__/$build_tag/g" $bintray_file
-upload_type=""
-if [ "$TRAVIS_EVENT_TYPE" = "cron" ]; then
-    upload_type="release"
-else
-    upload_type="personal"
-fi
-
-sed -i -e "s/__upload_type__/$upload_type/g" $bintray_file
+#upload_type=""
+#if [ "$TRAVIS_EVENT_TYPE" = "cron" ]; then
+#    upload_type="release"
+#else
+#    upload_type="contbld"
+#fi
+#
+#sed -i -e "s/__upload_type__/$upload_type/g" $bintray_file
 
 echo "Finished updating $bintray_file"
 echo "Contents:"

@@ -1,12 +1,12 @@
 {
     "package": {
-        "name": "olt-__upload_type__",
+        "name": "olt-ci",
         "repo": "olt-sandbox",
         "subject": "tetchell"
     },
 
     "version": {
-        "name": "__upload_type__",
+        "name": "continuous-integration",
         "released": "__released__",
         "vcs_tag": "__vcs_tag__"
     },
