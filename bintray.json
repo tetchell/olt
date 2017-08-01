@@ -6,10 +6,12 @@
     },
 
     "version": {
-        "name": "testing"   
+        "name": "testing",
+        "released": "__released__",
+        "vcs_tag": "__vcs_tag__"
     },
 
     "files": [
-        { "includePattern": "./build/libs/(.*).jar", "uploadPattern": "artifacts/$1"}
+        { "includePattern": "./build/libs/(.*)", "uploadPattern": "__upload_dir__/$1" }
     ]
 }
