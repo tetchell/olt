@@ -1,0 +1,11 @@
+{
+    "package": {
+        "name": "olt",
+        "repo": "olt-sandbox",
+        "subject": "tetchell"
+    },
+
+    "files": [
+        { "includePattern": "*.jar" }
+    ]
+}

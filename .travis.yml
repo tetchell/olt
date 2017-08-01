@@ -1,7 +1,20 @@
 language: java
 os:
 - linux
-script:
-- ls -Ra
-after_success:
-    echo "after_success"
+
+# https://docs.travis-ci.com/user/deployment/bintray/
+
+before_deploy:
+    echo "before_deploy"
+
+deploy:
+    provider: bintray
+    file: "bintray.json"
+    user: "tetchell"
+
+    key:
+        secure: CXrkagPHmL2TM/IZI+766GYkTSjEgBsd1n0AECftEUpsD2LwXJpvi0ybo7asiN7ZgdjzELGBwbdlK8JCizLLfdcozOZp7VHZGLH37GQ7WUBH54UpwA6uNavZEESiY+pS/Pmiw+T7e35vGuITNX2MnBORrw2EkxTo5G3COkCCVwzwm1nXSEor4nVaAWpbeEUXWnm/WM3azVh/BNzFQYrloa5bYwa3Ko8ka9NxTs0xULSqfJj541v+oiYVoRpckVgt+k0etC5dfMXUKOQEW9fKsZIU6izJGQHfBKQjsRt6KbxdzD83OAI5YQlNAMToqjkxYud3auyKIoUvjFaZWDigng0/8zVXXwK6+q9BKj2ApqdDFNNVh/m4i5RQKHS58QmVTxkXg5oXOtzhQ61ILRiMDGUcV7B48IIyXXEPA/+WoQrpdQTQvomONlxWld+sT3MkAouEcUZMUB01exTGUa2NunoB7A4UK+dC5+pAZ/6rSJnTlnzBrkhr7AoZVx+UV9FesKkpEUhIftuzwSfLB9DlX6C1WXCprjptPsryJZT04E5IuAAXlj/aCFFRSsbGfgo/VNgenrotN7jGKO4r8/DvJXZmhDoRZPzd6GOmgX9qBweqz/WZvIZiGVbA6ru7c5UoeihdYcPZBc0RqaxsnQnwc9Ty0zZKisHbMVMUDDeQ3cQ=
+    dry-run: "true"
+
+after_deploy:
+    echo "after_deploy"
