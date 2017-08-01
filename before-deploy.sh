@@ -24,16 +24,16 @@ else
 fi
 
 sed -i -e "s/__vcs_tag__/$build_tag/g" $bintray_file
-upload_dir=""
+upload_type=""
 if [ "$TRAVIS_EVENT_TYPE" = "push" ]; then
-    upload_dir="\/push"
+    upload_type="push"
 elif [ "$TRAVIS_EVENT_TYPE" = "cron" ]; then
-    upload_dir="\/release"
+    upload_type="release"
 else
-    upload_dir="\/personal"
+    upload_type="personal"
 fi
 
-sed -i -e "s/__upload_dir__/$upload_dir/g" $bintray_file
+sed -i -e "s/__upload_type__/$upload_type/g" $bintray_file
 
 echo "Finished updating $bintray_file"
 echo "Contents:"
