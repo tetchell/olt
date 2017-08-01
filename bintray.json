@@ -5,7 +5,11 @@
         "subject": "tetchell"
     },
 
+    "version": {
+        "name": "testing"   
+    },
+
     "files": [
-        { "includePattern": "*.jar" }
+        { "includePattern": "./build/libs/(.*).jar", "uploadPattern": "artifacts/$1"}
     ]
 }

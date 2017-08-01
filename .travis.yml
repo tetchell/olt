@@ -4,8 +4,11 @@ os:
 
 # https://docs.travis-ci.com/user/deployment/bintray/
 
+script:
+   gradle build 
+
 before_deploy:
-    echo "before_deploy"
+    ls -Ra -I.git
 
 deploy:
     provider: bintray
@@ -18,3 +21,10 @@ deploy:
 
 after_deploy:
     echo "after_deploy"
+
+notifications:
+    email:
+        recipients:
+            - etim@ca.ibm.com
+        on_success: change
+        on_failure: always
