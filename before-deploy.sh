@@ -25,9 +25,7 @@ fi
 
 sed -i -e "s/__vcs_tag__/$build_tag/g" $bintray_file
 upload_type=""
-if [ "$TRAVIS_EVENT_TYPE" = "push" ]; then
-    upload_type="push"
-elif [ "$TRAVIS_EVENT_TYPE" = "cron" ]; then
+if [ "$TRAVIS_EVENT_TYPE" = "cron" ]; then
     upload_type="release"
 else
     upload_type="personal"
