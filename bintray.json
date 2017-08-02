@@ -6,13 +6,12 @@
     },
 
     "version": {
-        "name": "__version_name__",
-        "released": "__released__",
-        "vcs_tag": "__vcs_tag__"
+        "name": "__version__",
+        "released": "__released__"
     },
 
     "files": [
-        { "includePattern": "./build/libs/(.*)", "uploadPattern": "__package__/$1" }
+        { "includePattern": "./build/libs/(.*)", "uploadPattern": "__package__/__version__/$1" }
     ],
 
     "publish": true
