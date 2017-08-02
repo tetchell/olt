@@ -2,36 +2,50 @@
 
 # Find and replace placeholders in bintray.json with real values
 
+find_replace_in_file() {
+    # $1 - path to file to edit
+    # $2 - string to replace
+    # $3 - string to replace each occurrence of $2 with
+    
+    sed -i -e "s/$2/$3/g" $1
+}
+
+
 bintray_file="./bintray.json"
 echo "before-deploy.sh - editing $bintray_file" 
 
 date=$(date +"%F")
-echo "Date is $date"
-sed -i -e "s/__released__/$date/g" $bintray_file
+#echo "Date is $date"
+find_replace_in_file $bintray_file __released__ $date
+
 
 build_tag=$TRAVIS_TAG
 if [ ! -z "$TRAVIS_TAG" ]; then
     echo "Travis tag is $TRAVIS_TAG"
 else
-    echo "No Travis tag"
+#    echo "No Travis tag"
     if [ ! -z "$TRAVIS_COMMIT" ]; then
         short_commit=${TRAVIS_COMMIT:0:8}
-        echo "Using commit $short_commit" 
+#        echo "Using commit $short_commit as tag" 
         build_tag="$short_commit"
     else
         echo "ERROR: TRAVIS_COMMIT is empty"
     fi
 fi
 
-sed -i -e "s/__vcs_tag__/$build_tag/g" $bintray_file
-#upload_type=""
-#if [ "$TRAVIS_EVENT_TYPE" = "cron" ]; then
-#    upload_type="release"
-#else
-#    upload_type="contbld"
-#fi
-#
-#sed -i -e "s/__upload_type__/$upload_type/g" $bintray_file
+find_replace_in_file $bintray_file __vcs_tag__ $build_tag
+
+package=""
+if [ "$TRAVIS_EVENT_TYPE" = "cron" ]; then
+    package="olt-nightly"
+else
+    package="olt-ci"
+fi
+
+sed -i -e "s/__package__/$package/g" $bintray_file
+
+find_replace_in_file $bintray_file __package__ $package
+find_replace_in_file $bintray_file __version_name__ $package
 
 echo "Finished updating $bintray_file"
 echo "Contents:"
