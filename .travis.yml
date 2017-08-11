@@ -8,14 +8,13 @@ branches:
     only:
         - integration
 
-# https://docs.travis-ci.com/user/deployment/bintray/
-
 script:
-   gradle build 
+   gradle build | tee build.log
 
 before_deploy:
-    ./before-deploy.sh
+    ./before-deploy.sh | tee -a build.log
 
+# https://docs.travis-ci.com/user/deployment/bintray/
 deploy:
     on: integration
     provider: bintray

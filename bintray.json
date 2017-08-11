@@ -11,7 +11,8 @@
     },
 
     "files": [
-        { "includePattern": "./build/libs/(.*)", "uploadPattern": "__package__/__version__/$1" }
+        { "includePattern": "./build/libs/(.*)", "uploadPattern": "__package__/__version__/$1" },
+        { "includePattern": "build.log", "uploadPattern": "__package__/__version__/build.log" }
     ],
 
     "publish": true
