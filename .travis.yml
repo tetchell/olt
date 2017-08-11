@@ -9,10 +9,13 @@ branches:
         - integration
 
 script:
-   gradle build | tee build.log
+    - ./echo-build-info.sh | tee -a $BUILD_LOG
+    - echo "Executing gradle build:" >> $BUILD_LOG
+    - gradle build | tee -a $BUILD_LOG
+    - echo "" >> $BUILD_LOG
 
 before_deploy:
-    ./before-deploy.sh | tee -a build.log
+    ./before-deploy.sh | tee -a $BUILD_LOG
 
 # https://docs.travis-ci.com/user/deployment/bintray/
 deploy:
