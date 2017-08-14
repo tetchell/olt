@@ -37,13 +37,11 @@ fi
 #find_replace_in_file $bintray_file __vcs_tag__ $build_tag
 
 package=""
-version_tag=""
+version_tag="$(date +%F_%H%M)"
 if [ "$TRAVIS_EVENT_TYPE" = "cron" ]; then
     package="olt-nightly"
-    version_tag="nightly_"$(date +%Y%m%d)
 else
     package="olt-ci"
-    version_tag="ci_$build_tag"
 fi
 
 find_replace_in_file $bintray_file __package__ $package

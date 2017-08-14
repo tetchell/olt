@@ -11,7 +11,7 @@ branches:
 script:
     - ./echo-build-info.sh | tee -a $BUILD_LOG
     - echo "Executing gradle build:" >> $BUILD_LOG
-    - gradle build | tee -a $BUILD_LOG
+    - gradle build -d | tee -a $BUILD_LOG
     - echo "" >> $BUILD_LOG
 
 before_deploy:
