@@ -38,5 +38,5 @@ if [ "$TRAVIS_EVENT_TYPE" = "cron" ]; then
         git push $REMOTE_NAME $MASTER_BRANCH
     fi
 else
-    echo "Skipping tagging and updating master; this is not a push build"
+    echo "Skipping tagging and updating master; this is not a cron build"
 fi

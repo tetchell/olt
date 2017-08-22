@@ -1,6 +1,6 @@
 {
-    "test_passed": "99",
-    "total_tests": "100",
+    "tests_passed": "__tests_passed__",
+    "total_tests": "__total_tests__",
     "tests_log": "test_results.html",
     "build_log": "build.log",
     "driver_location": "__driver_location__"

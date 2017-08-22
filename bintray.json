@@ -13,7 +13,7 @@
     "files": [
         { "includePattern": "__path_to_artifacts__(.*\.jar)", "uploadPattern": "__package__/__version__/$1" },
         { "includePattern": "build.log", "uploadPattern": "__package__/__version__/build.log" },
-        { "includePattern": "test_result.html", "uploadPattern": "__package__/__version__/test_results.html" }
+        { "includePattern": "test_results.html", "uploadPattern": "__package__/__version__/test_results.html" }
     ],
 
     "publish": true
