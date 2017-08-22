@@ -18,23 +18,7 @@ date=$(date +%F)
 #echo "Date is $date"
 find_replace_in_file $bintray_file __released__ $date
 
-build_tag=$TRAVIS_TAG
-if [ ! -z "$TRAVIS_TAG" ]; then
-    echo "Travis tag is $TRAVIS_TAG"
-else
-#    echo "No Travis tag"
-    if [ ! -z "$TRAVIS_COMMIT" ]; then
-        short_commit=${TRAVIS_COMMIT:0:8}
-#        echo "Using commit $short_commit as tag" 
-        build_tag="$short_commit"
-    else
-        # This will never happen in a real build
-        echo "ERROR: TRAVIS_COMMIT is empty"
-        build_tag=$(date +%s)
-    fi
-fi
-
-#find_replace_in_file $bintray_file __vcs_tag__ $build_tag
+short_commit=${TRAVIS_COMMIT:0:8}
 
 package=""
 version_tag="$(date +%F_%H%M)"
@@ -42,6 +26,8 @@ if [ "$TRAVIS_EVENT_TYPE" = "cron" ]; then
     package="olt-nightly"
 else
     package="olt-ci"
+    # add short commit to ci builds too to prevent collision
+    version_tag=$version_tag_$short_commit
 fi
 
 find_replace_in_file $bintray_file __package__ $package
