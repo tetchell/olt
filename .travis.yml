@@ -15,7 +15,7 @@ env:
 script:
     - ./echo-build-info.sh | tee -a $BUILD_LOG
     - echo "Executing gradle build:" >> $BUILD_LOG
-    - gradle build -i | tee -a $BUILD_LOG
+    - travis_wait gradle build -i --stacktrace | tee -a $BUILD_LOG
     - echo "" >> $BUILD_LOG
 
 before_deploy:
